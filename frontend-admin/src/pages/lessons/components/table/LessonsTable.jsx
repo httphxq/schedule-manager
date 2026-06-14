@@ -1,12 +1,12 @@
 import store from '../../../../state/store';
 import { daysMap } from '../../../../utils/lessons';
-import HeadCell from './HeadCell';
+import HeadRow from './HeadRow';
 import styles from './LessonsTable.module.css'
-import TableCell from './TableCell';
+import TableRow from './TableRow';
 
 
 export default function LessonsTable({ lessonsByGroups, weekdays, lessonsInDay }) {
-  const { selectedGroup } = store.ui
+  const { selectedGroup } = store.ui.lessons
 
   return (
     <table class={styles.table}>
@@ -20,7 +20,7 @@ export default function LessonsTable({ lessonsByGroups, weekdays, lessonsInDay }
         <tr>
           <th>Пара</th>
           {weekdays.map(() => (
-            <HeadCell lessonsInDay={lessonsInDay} />
+            <HeadRow lessonsInDay={lessonsInDay} />
           ))}
         </tr>
       </thead>
@@ -29,7 +29,7 @@ export default function LessonsTable({ lessonsByGroups, weekdays, lessonsInDay }
           <tr class={selectedGroup === group.id ? 'selectedGroup' : ''}>
             <td>{group.name}</td>
             {group.weekdays.map((day) => (
-              <TableCell lessons={day.lessons} weekday={day.dayIndex} group={group}/>
+              <TableRow lessons={day.lessons} weekday={day.dayIndex} group={group}/>
             ))}
           </tr>
         ))}

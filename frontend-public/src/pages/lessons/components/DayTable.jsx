@@ -22,7 +22,7 @@ export default function LessonsTable({ lessons, startDate }) {
       </div>
       <table class={styles.table}>
         <tbody>
-          {lessons.map(lesson => <Lesson {...lesson} />)}
+          {lessons.map(lesson => <Lesson lesson={lesson} />)}
         </tbody>
       </table>
     </div>

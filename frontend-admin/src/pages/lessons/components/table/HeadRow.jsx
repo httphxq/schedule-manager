@@ -1,7 +1,7 @@
 import { lessonsToArray } from '../../../../utils/lessons';
 import styles from './LessonsTable.module.css'
 
-export default function HeadCell({ lessonsInDay }) {
+export default function HeadRow({ lessonsInDay }) {
   const pairsInDay = lessonsToArray(lessonsInDay)
   return (
     <td>

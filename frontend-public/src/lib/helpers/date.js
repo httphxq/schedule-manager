@@ -22,24 +22,18 @@ export function getMondayDate(dateStr, offset = 0) {
   return `${year}-${month}-${day}`;
 }
 
-export const getWeekRange = (date) => {
-  const start = new Date(date);
-  const dayOfWeek = start.getDay();
-  const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+export const getWeekRange = (startDate) => {
+  const start = new Date(startDate);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
 
-  const monday = new Date(start);
-  monday.setDate(start.getDate() - diffToMonday);
-
-  const sunday = new Date(monday);
-  sunday.setDate(monday.getDate() + 6);
-
-  const format = d => d.toLocaleDateString('ru-RU', {
+  const format = date => date.toLocaleDateString('ru-RU', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
   });
 
-  return `${format(monday)} - ${format(sunday)}`;
+  return `${format(start)} - ${format(end)}`;
 };
 
 export function calcDate(startOfWeek, dayOfWeek) {

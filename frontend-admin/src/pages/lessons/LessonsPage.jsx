@@ -8,6 +8,7 @@ import InfoSection from './components/InfoSection';
 import { fetchWorkloads } from '../../api/workloads';
 import { buildLessons } from '../../utils/lessons';
 import store from '../../state/store';
+import { getWeekRange } from '../../utils/date';
 
 export default async function LessonsPage() {
   const { pathname } = new URL(window.location.href)
@@ -27,7 +28,10 @@ export default async function LessonsPage() {
   return (
     <div class={styles.crudPage}>
       <div class={styles.crudHeader}>
-        <h1>Уроки: {schedule.name}</h1>
+        {schedule.startDate 
+        ?  <h1>Расписание: {`${schedule.name} (${getWeekRange(schedule.startDate)})`}</h1>
+        :  <h1>Расписание: {schedule.name}</h1>
+      }
       </div>
 
       <div class={styles.tableWrapper}>

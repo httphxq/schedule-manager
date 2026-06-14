@@ -1,24 +1,43 @@
-.sidebar {
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 25px;
+  background-color: #1e293b;
+  border: none;
+  border-bottom: 1px solid #2c3e50;
+  color: #ecf0f1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggle:hover {
+  background-color: #2c3e50;
+}
+
+.list {
   margin: 0;
   padding: 0;
   list-style: none;
-  flex-shrink: 0;
   background-color: #1e293b;
-  width: 100%;
+  flex: 1;
 }
 
-.sidebar li {
+.list li {
   border-bottom: 1px solid #2c3e50;
   font-weight: 500;
   transition: background-color 0.2s;
 }
 
-.sidebar li button {
+.list li button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 15px 25px;
   background: none;
   border: none;
   color: #ecf0f1;
-  display: block;
   width: 100%;
   text-align: left;
   font-size: inherit;
@@ -28,6 +47,11 @@
   transition: background-color 0.2s;
 }
 
-.sidebar li:hover {
+.list li:hover {
   background-color: #2c3e50;
+}
+
+.toggle svg,
+.list li button svg {
+  flex-shrink: 0;
 }

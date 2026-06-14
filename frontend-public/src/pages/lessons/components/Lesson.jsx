@@ -1,7 +1,7 @@
 import { parseUrl } from '../../../lib/helpers/urlHelpers'
 import styles from './Lesson.module.css'
 
-export default function Lesson(lesson) {
+export default function Lesson({lesson}) {
   const { category } = parseUrl(window.location.href)
   
   if (lesson.type === 'window') {
@@ -18,12 +18,12 @@ export default function Lesson(lesson) {
   return (
     <tr>
       <td class={styles.time}>
-        <div>{lesson.start_time}</div>
-        <div>{lesson.end_time}</div>
+        <div>{lesson.startTime}</div>
+        <div>{lesson.endTime}</div>
       </td>
       <td class={styles.info}>
-        <div class={styles.subject}>{lesson.subject_name}</div>
-        <div class={styles.groups}>{category === 'groups' ? lesson.teacher_name : lesson.group_name}</div>
+        <div class={styles.subject}>{lesson.subjectName}</div>
+        <div class={styles.groups}>{category === 'groups' ? lesson.teacherName : lesson.joinedGroups}</div>
       </td>
     </tr>
   )

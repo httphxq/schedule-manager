@@ -5,6 +5,7 @@ import { deleteWorkload } from '../../../../api/workloads';
 import { ui } from '../../../../utils/dom';
 import InfoSection from '../InfoSection';
 import styles from './Workload.module.css'
+import { setLessonsUiState } from '../../../../state/storeHelpers';
 
 export default function Workload({ workload }) {
   const handleDeleteWorkload = async () => {
@@ -22,9 +23,10 @@ export default function Workload({ workload }) {
     ])
   }
   const selectworkload = () => {
-    store.ui.selectedGroup = workload.groupId
-    store.ui.selectedWorkload = workload
-    store.ui.workloadId = workload.workloadId
+    store.ui.lessons.selectedGroup = workload.groupId
+    store.ui.lessons.selectedWorkload = workload
+    store.ui.lessons.workloadId = workload.workloadId
+    setLessonsUiState('workloadSelected')
     refreshPage()
   }
   const onMouseEnter = () => {
@@ -35,7 +37,7 @@ export default function Workload({ workload }) {
   }
 
   return (
-    <div class={store.ui.workloadId === workload.workloadId ? `${styles.workload} ${styles.active}` : `${styles.workload}` } onMouseEnter = { onMouseEnter }
+    <div class={store.ui.lessons.workloadId === workload.workloadId ? `${styles.workload} ${styles.active}` : `${styles.workload}` } onMouseEnter = { onMouseEnter }
   onMouseLeave = { onMouseLeave } onClick = { selectworkload } onContextMenu = { handleContextMenu } >
       <div class={styles.subjectName}>{workload.subjectAbbr}</div>
       <div class={styles.divider}></div>

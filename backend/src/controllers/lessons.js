@@ -9,7 +9,7 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
     );
 
     const { rows: scheduleInfo } = await client.query(`
-      SELECT id, name, lessons_in_day as "lessonsInDay", weekdays
+      SELECT id, name, lessons_in_day as "lessonsInDay", weekdays, start_date as "startDate"
       FROM schedules
       WHERE id = $1
     `, [scheduleId]);

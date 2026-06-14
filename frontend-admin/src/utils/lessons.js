@@ -26,6 +26,7 @@ export const buildLessons = (scheduleData) => {
     currentLesson.teacherName = lesson.teacherName;
     currentLesson.text = currentGroup.abbreviation;
     currentLesson.style = 'booked';
+    currentLesson.workloadId = lesson.id;
   });
 
   return newGroups;

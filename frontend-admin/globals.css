@@ -161,7 +161,23 @@ html, body {
 
 #sidebarContainer {
   display: flex;
+  flex-direction: column;
   width: 22%;
+  transition: width 0.2s ease;
+}
+
+#sidebarContainer.collapsed {
+  width: 64px;
+}
+
+#sidebarContainer.collapsed .sidebarLabel {
+  display: none;
+}
+
+#sidebarContainer.collapsed button {
+  justify-content: center;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .selectedGroup {
