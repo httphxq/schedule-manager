@@ -5,8 +5,11 @@ import BreadCrumbs from '../../components/BreadCrumbs.jsx'
 import { fetchLessons } from '../../lib/api.js'
 import PageNavigation from '../../components/PageNavigation.jsx'
 import { parseUrl } from '../../lib/helpers/urlHelpers.js'
+import { render } from '../../core/render.js'
+import Spinner from '../../components/Spinner.jsx'
 
 export default async function GroupsLessons() {
+  await render('#app', <Spinner />)
   const { lessons, group, date } = await fetchLessons('groups')
 
   const sortedLessons = sortLessonsByDays(lessons)
