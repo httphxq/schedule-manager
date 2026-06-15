@@ -1,4 +1,4 @@
-import { setLesson } from '../../../../api/lessons.js';
+import { deleteLesson, setLesson } from '../../../../api/lessons.js';
 import { decrementWorkload } from '../../../../api/workloads.js';
 import { render } from '../../../../core/render.js';
 import { refreshPage } from '../../../../core/router.js';
@@ -34,6 +34,19 @@ export default function TableRow({ lessons, weekday, group }) {
     };
   }
 
+  const handleDeleteLesson = async (lesson) => {
+    const result = await deleteLesson(lesson.workloadId)
+    ui.showFlashMessage(result)
+    refreshPage()
+  }
+
+  const handleLessonContextMenu = (e, lesson) => {
+    if (lesson.style !== 'booked') return;
+    ui.showCustomMenu(e.clientX, e.clientY, [
+      { label: 'Удалить', variant: 'danger', onClick: () => handleDeleteLesson(lesson) },
+    ])
+  }
+
   const showLessonInfo = (lesson) => {
     if (lesson.style !== 'booked') return;
     render("#infoSection", <InfoSection scheduleItem={lesson} />)
@@ -48,7 +61,7 @@ export default function TableRow({ lessons, weekday, group }) {
     <td>
       <div class={styles.pairsContainer}>
         {lessons.map((lesson, index) => (
-          <div class={`${styles.pairSlot} ${lesson.style}`} onMouseEnter={() => showLessonInfo(lesson)} onMouseLeave={() => clearLessonInfo(lesson)} onClick={(e) => handleLessonClick(e.target, lesson)}>
+          <div class={`${styles.pairSlot} ${lesson.style}`} onMouseEnter={() => showLessonInfo(lesson)} onMouseLeave={() => clearLessonInfo(lesson)} onClick={(e) => handleLessonClick(e.target, lesson)} onContextMenu={(e) => handleLessonContextMenu(e, lesson)}>
             <span class={styles.pairText} title={lesson.text}>{lesson.text}</span>
           </div>
         ))}
