@@ -9,7 +9,9 @@
   border-bottom: 1px solid #2c3e50;
   color: #ecf0f1;
   cursor: pointer;
-  transition: background-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: background-color 0.2s, padding 0.2s ease;
 }
 
 .toggle:hover {
@@ -44,7 +46,9 @@
   font-family: inherit;
   font-weight: inherit;
   cursor: pointer;
-  transition: background-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: background-color 0.2s, padding 0.2s ease;
 }
 
 .list li:hover {

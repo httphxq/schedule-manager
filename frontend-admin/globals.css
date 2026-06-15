@@ -170,14 +170,17 @@ html, body {
   width: 64px;
 }
 
+.sidebarLabel {
+  transition: opacity 0.15s ease;
+}
+
 #sidebarContainer.collapsed .sidebarLabel {
-  display: none;
+  opacity: 0;
 }
 
 #sidebarContainer.collapsed button {
-  justify-content: center;
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 22px;
+  padding-left: 22px;
 }
 
 .selectedGroup {
