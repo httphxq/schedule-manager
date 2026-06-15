@@ -1,14 +1,14 @@
 import SidebarCategory from './SidebarCategory.jsx'
 import styles from './Sidebar.module.css'
 import { redirect } from '../core/router.js'
-import store from '../state/store.js'
 import {
   MenuIcon, ScheduleIcon, GridIcon, BellIcon,
   GroupsIcon, BookIcon, TeacherIcon, DoorIcon, PublishIcon,
 } from './icons.jsx'
+import globalState from '../state/globalState.js'
 
 export default function Sidebar() {
-  const { currentScheduleId } = store
+  const { currentScheduleId } = globalState.getCurrentScheduleId()
   const { pathname } = new URL(window.location.href)
 
   const handleClick = (e, path) => {

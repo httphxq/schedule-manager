@@ -1,14 +1,12 @@
 import { render } from '../../../../core/render';
 import { refreshPage } from '../../../../core/router';
-import store from '../../../../state/store';
 import { deleteWorkload } from '../../../../api/workloads';
 import { ui } from '../../../../utils/dom';
 import InfoSection from '../InfoSection';
 import styles from './Workload.module.css'
-import { setLessonsUiState } from '../../../../state/storeHelpers';
+import lessonsState from '../../../../state/lessonsState';
 
 export default function Workload({ workload }) {
-  console.log(111, store.ui.lessons.status);
   const handleDeleteWorkload = async () => {
     const result = await deleteWorkload(workload.workloadId)
     ui.showFlashMessage(result)
@@ -25,23 +23,21 @@ export default function Workload({ workload }) {
     ])
   }
   const unselectWorkload = () => {
-    store.ui.lessons.selectedGroup = null
-    store.ui.lessons.selectedWorkload = null
-    store.ui.lessons.workloadId = null
-    setLessonsUiState('idle')
+    lessonsState.clearCursorStatus()
     refreshPage()
   }
 
   const selectWorkload = () => {
-    store.ui.lessons.selectedGroup = workload.groupId
-    store.ui.lessons.selectedWorkload = workload
-    store.ui.lessons.workloadId = workload.workloadId
-    setLessonsUiState('workloadSelected')
+    lessonsState.setSelectedGroupId(workload.groupId)
+    lessonsState.setSelectedWorkloadId(workload.workloadId)
+    lessonsState.setSelectedWorkload(workload)
+    lessonsState.setCursorStatus('workloadSelected')
+    console.log(33, lessonsState);
     refreshPage()
   }
 
   const handleWorkloadClick = () => {
-    store.ui.lessons.status !== 'workloadSelected' 
+    lessonsState.getCursorStatus() !== 'workloadSelected' 
       ? selectWorkload()
       : unselectWorkload()
   }
@@ -54,7 +50,7 @@ export default function Workload({ workload }) {
   }
 
   return (
-    <div class={store.ui.lessons.workloadId === workload.workloadId ? `${styles.workload} ${styles.active}` : `${styles.workload}` } onMouseEnter = { onMouseEnter }
+    <div class={lessonsState.getSelectedWorkloadId() === workload.workloadId ? `${styles.workload} ${styles.active}` : `${styles.workload}` } onMouseEnter = { onMouseEnter }
   onMouseLeave = { onMouseLeave } onClick = { handleWorkloadClick } onContextMenu = { handleContextMenu } >
       <div class={styles.subjectName}>{workload.subjectAbbr}</div>
       <div class={styles.divider}></div>

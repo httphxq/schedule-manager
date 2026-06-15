@@ -1,11 +1,11 @@
 import { render } from "./core/render";
 import { redirect } from "./core/router";
-import { initializeLocalState } from "./state/initializeLocalState";
 import SchedulesPage from "./pages/schedules/SchedulesPage";
 import Sidebar from "./shared/Sidebar";
 import ContextMenu from "./ui/ContextMenu";
+import { initializeGlobalState } from "./state/globalState";
 
-await initializeLocalState();
+await initializeGlobalState();
 
 export default function App() {
   const { pathname } = new URL(window.location.href)

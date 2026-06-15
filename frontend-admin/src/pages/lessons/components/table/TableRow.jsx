@@ -2,33 +2,31 @@ import { deleteLesson, setLesson } from '../../../../api/lessons.js';
 import { decrementWorkload } from '../../../../api/workloads.js';
 import { render } from '../../../../core/render.js';
 import { refreshPage } from '../../../../core/router.js';
-import store from '../../../../state/store.js';
-import { dispatchLessonClick, setLessonsUiState } from '../../../../state/storeHelpers.js';
 import { ui } from '../../../../utils/dom.js';
 import { lessonsToArray } from '../../../../utils/lessons.js';
 import InfoSection from '../InfoSection.jsx';
 import styles from './LessonsTable.module.css'
+import lessonsState from '../../../../state/lessonsState.js';
+import globalState from '../../../../state/globalState.js';
 
 export default function TableRow({ lessons, weekday, group }) {
 
   const setWorkloadToLessons = async (lesson) => {
     const { lessonNumber } = lesson
-    const result = await setLesson({ ...store.ui.lessons.selectedWorkload, lessonNumber, scheduleId: store.currentScheduleId, weekday })
+    const result = await setLesson({ ...lessonsState.getSelectedWorkload(), lessonNumber, scheduleId: globalState.getCurrentScheduleId(), weekday })
+    console.log(22, { ...lessonsState.getSelectedWorkload(), lessonNumber, scheduleId: globalState.getCurrentScheduleId(), weekday });
     ui.showFlashMessage(result)
     if (result.type === 'success') {
-      const result = await decrementWorkload(store.ui.lessons.selectedWorkload.workloadId);
+      const result = await decrementWorkload(lessonsState.getSelectedWorkload().workloadId);
       if (result.workloadsLeft === 0) {
-        store.ui.lessons.status = 'idle'
-        store.ui.lessons.selectedGroup = null;
-        store.ui.lessons.selectedLesson = null;
-        store.ui.lessons.selectedWorkload = null;
+        lessonsState.clearCursorStatus()
       }
     }
     refreshPage()
   }
 
   const handleLessonClick = async (target, lesson) => {
-    if (store.ui.lessons.status === 'workloadSelected') {
+    if (lessonsState.getCursorStatus() === 'workloadSelected') {
       await setWorkloadToLessons(lesson)
       return;
     };

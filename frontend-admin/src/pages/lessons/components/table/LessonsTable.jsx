@@ -1,12 +1,11 @@
-import store from '../../../../state/store';
+import lessonsState from '../../../../state/lessonsState';
 import { daysMap } from '../../../../utils/lessons';
 import HeadRow from './HeadRow';
 import styles from './LessonsTable.module.css'
 import TableRow from './TableRow';
 
-
 export default function LessonsTable({ lessonsByGroups, weekdays, lessonsInDay }) {
-  const { selectedGroup } = store.ui.lessons
+  const selectedGroup = lessonsState.getSelectedGroupId()
 
   return (
     <table class={styles.table}>

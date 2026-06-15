@@ -7,13 +7,14 @@ import styles from './LessonsPage.module.css'
 import InfoSection from './components/InfoSection';
 import { fetchWorkloads } from '../../api/workloads';
 import { buildLessons } from '../../utils/lessons';
-import store from '../../state/store';
+import lessonsState from '../../state/lessonsState'
 import { getWeekRange } from '../../utils/date';
+import globalState from '../../state/globalState';
 
 export default async function LessonsPage() {
   const { pathname } = new URL(window.location.href)
   const [, , , scheduleId] = pathname.split('/')
-  store.currentScheduleId = Number(scheduleId)
+  globalState.setCurrentScheduleId(scheduleId);
   const scheduleData = await fetchLessons(scheduleId);
   const workloads = await fetchWorkloads(scheduleId)
   const { groups, teachers, subjects, schedule } = scheduleData

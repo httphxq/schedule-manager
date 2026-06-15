@@ -1,9 +1,9 @@
 import { render } from "../../../core/render";
 import pages from "../../pages.module.css"
 import { redirect } from "../../../core/router";
-import store from "../../../state/store";
 import Sidebar from "../../../shared/Sidebar";
 import styles from './SchedulesTable.module.css'
+import globalState from "../../../state/globalState";
 
 export default function SchedulesTable({ schedules, onEdit, onDelete }) {
   const formatScheduleType = (schedule) => {
@@ -23,7 +23,7 @@ export default function SchedulesTable({ schedules, onEdit, onDelete }) {
   };
 
   const redirectToLessons = (scheduleId) => {
-    store.currentScheduleId = scheduleId
+    globalState.setCurrentScheduleId(scheduleId)
     redirect(`/admin/lessons/${scheduleId}`)
     render('#sidebarContainer', <Sidebar />)
   }
