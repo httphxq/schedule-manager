@@ -26,6 +26,7 @@ export default function Sidebar() {
     <>
       <button class={styles.toggle} onClick={toggleSidebar} aria-label="Свернуть меню">
         <MenuIcon />
+        <span class="sidebarLabel">Свернуть</span>
       </button>
       <ol class={styles.list}>
         <SidebarCategory icon={<ScheduleIcon />} text="Расписания" handler={(e) => handleClick(e, "/admin/schedules")} isActive={pathname.startsWith("/admin/schedules")} />

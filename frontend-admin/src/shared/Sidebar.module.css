@@ -3,11 +3,15 @@
   align-items: center;
   gap: 12px;
   width: 100%;
+  flex-shrink: 0;
   padding: 15px 25px;
   background-color: #1e293b;
   border: none;
   border-bottom: 1px solid #2c3e50;
   color: #ecf0f1;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
