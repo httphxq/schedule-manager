@@ -76,7 +76,7 @@ export default function UpdateScheduleForm({ closeId, schedule }) {
         />
       </label>
 
-      <div class={styles.weekdays}>
+      <fieldset class={styles.weekdays}>
         <label><input type="checkbox" name="weekdays" value="1" checked={isChecked(1)} /> Пн</label>
         <label><input type="checkbox" name="weekdays" value="2" checked={isChecked(2)} /> Вт</label>
         <label><input type="checkbox" name="weekdays" value="3" checked={isChecked(3)} /> Ср</label>
@@ -84,7 +84,7 @@ export default function UpdateScheduleForm({ closeId, schedule }) {
         <label><input type="checkbox" name="weekdays" value="5" checked={isChecked(5)} /> Пт</label>
         <label><input type="checkbox" name="weekdays" value="6" checked={isChecked(6)} /> Сб</label>
         <label><input type="checkbox" name="weekdays" value="7" checked={isChecked(7)} /> Вс</label>
-      </div>
+      </fieldset>
 
       <button type="submit">Редактировать</button>
     </form>
