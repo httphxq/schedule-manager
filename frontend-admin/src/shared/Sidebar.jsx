@@ -8,7 +8,7 @@ import {
 import globalState from '../state/globalState.js'
 
 export default function Sidebar() {
-  const { currentScheduleId } = globalState.getCurrentScheduleId()
+  const currentScheduleId = globalState.getCurrentScheduleId()
   const { pathname } = new URL(window.location.href)
 
   const handleClick = (e, path) => {
