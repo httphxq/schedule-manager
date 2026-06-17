@@ -23,16 +23,16 @@ export default function CreateGroupForm() {
     <form class={styles.form} onSubmit={onSubmit}>
     <h3>Добавить группу</h3>
     <div>
-      <label htmlFor="name">Название группы</label>
-      <input type="text" id="name" name="name" placeholder="Название группы" required />
+      <label htmlFor="name">Название группы:</label>
+      <input type="text" id="name" name="name" required />
     </div>
     <div>
-      <label htmlFor="yearOfAdmission">Год поступления</label>
-      <input type="text" id="yearOfAdmission" name="yearOfAdmission" placeholder="Год поступления" required />
+      <label htmlFor="yearOfAdmission">Год поступления:</label>
+      <input type="text" id="yearOfAdmission" name="yearOfAdmission" required />
     </div>
     <div>
-      <label htmlFor="abbreviation">Сокращение</label>
-      <input type="text" id="abbreviation" name="abbreviation" placeholder="Сокращение" />
+      <label htmlFor="abbreviation">Сокращение:</label>
+      <input type="text" id="abbreviation" name="abbreviation" />
     </div>
     <button type="submit">Добавить</button>
   </form>

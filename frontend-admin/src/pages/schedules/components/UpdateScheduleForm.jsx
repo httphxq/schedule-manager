@@ -52,13 +52,13 @@ export default function UpdateScheduleForm({ closeId, schedule }) {
       <h3>Редактировать расписание</h3>
 
       <div>
-        <label htmlFor="name">Название расписания</label>
-        <input type="text" id="name" name="name" placeholder="Название расписания" required value={schedule.name} />
+        <label htmlFor="name">Название расписания:</label>
+        <input type="text" id="name" name="name" required value={schedule.name} />
       </div>
 
       <div>
-        <label htmlFor="lessonsInDay">Количество пар в день</label>
-        <input type="number" id="lessonsInDay" name="lessonsInDay" placeholder="Количество пар в день" required min="1" max="8" value={schedule.lessonsInDay} />
+        <label htmlFor="lessonsInDay">Количество пар в день:</label>
+        <input type="number" id="lessonsInDay" name="lessonsInDay" required min="1" max="8" value={schedule.lessonsInDay} />
       </div>
 
       <label htmlFor="type">Тип расписания:</label>

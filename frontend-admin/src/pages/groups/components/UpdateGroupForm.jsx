@@ -24,16 +24,16 @@ export default function UpdateGroupForm({ group }) {
     <form class={styles.form} onSubmit={onSubmit} id="updateGroupForm">
       <h3>Редактировать группу</h3>
       <div>
-        <label htmlFor="name">ФИО</label>
-        <input type="text" id="name" name="name" placeholder="ФИО" required value={group.name} />
+        <label htmlFor="name">ФИО:</label>
+        <input type="text" id="name" name="name" required value={group.name} />
       </div>
       <div>
-        <label htmlFor="yearOfAdmission">Сокращение</label>
-        <input type="text" id="yearOfAdmission" name="yearOfAdmission" placeholder="Сокращение" required value={group.yearOfAdmission} />
+        <label htmlFor="yearOfAdmission">Сокращение:</label>
+        <input type="text" id="yearOfAdmission" name="yearOfAdmission" required value={group.yearOfAdmission} />
       </div>
       <div>
-        <label htmlFor="abbreviation">Должность</label>
-        <input type="text" id="abbreviation" name="abbreviation" placeholder="Должность" value={group.abbreviation} />
+        <label htmlFor="abbreviation">Должность:</label>
+        <input type="text" id="abbreviation" name="abbreviation" value={group.abbreviation} />
       </div>
       <button type="submit">Редактировать</button>
     </form>

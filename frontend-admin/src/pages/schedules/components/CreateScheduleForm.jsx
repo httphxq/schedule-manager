@@ -40,13 +40,13 @@ export default function CreateScheduleForm({ type }) {
       <h3>Добавить расписание</h3>
 
       <div>
-        <label htmlFor="name">Название расписания</label>
-        <input type="text" id="name" name="name" placeholder="Название расписания" required />
+        <label htmlFor="name">Название расписания:</label>
+        <input type="text" id="name" name="name" required />
       </div>
 
       <div>
-        <label htmlFor="lessonsInDay">Количество пар в день</label>
-        <input type="number" id="lessonsInDay" name="lessonsInDay" placeholder="Количество пар в день" required min="1" max="8" />
+        <label htmlFor="lessonsInDay">Количество пар в день:</label>
+        <input type="number" id="lessonsInDay" name="lessonsInDay" required min="1" max="8" />
       </div>
 
       <label htmlFor="type">Тип расписания:</label>

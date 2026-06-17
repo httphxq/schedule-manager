@@ -25,20 +25,20 @@ export default function UpdateClassForm({ classItem }) {
     <form class={styles.form} onSubmit={onSubmit} id="updateClassForm">
       <h3>Редактировать аудиторию</h3>
       <div>
-        <label htmlFor="name">Название</label>
-        <input type="text" id="name" name="name" placeholder="Название" required value={classItem.name} />
+        <label htmlFor="name">Название:</label>
+        <input type="text" id="name" name="name" required value={classItem.name} />
       </div>
       <div>
-        <label htmlFor="abbreviation">Сокращение</label>
-        <input type="text" id="abbreviation" name="abbreviation" placeholder="Сокращение" value={classItem.abbreviation} />
+        <label htmlFor="abbreviation">Сокращение:</label>
+        <input type="text" id="abbreviation" name="abbreviation" value={classItem.abbreviation} />
       </div>
       <div>
-        <label htmlFor="capacity">Количество мест</label>
-        <input type="number" id="capacity" name="capacity" placeholder="Количество мест" min="0" value={classItem.capacity} />
+        <label htmlFor="capacity">Количество мест:</label>
+        <input type="number" id="capacity" name="capacity" min="0" value={classItem.capacity} />
       </div>
       <div>
-        <label htmlFor="building">Корпус</label>
-        <input type="text" id="building" name="building" placeholder="Корпус" value={classItem.building} />
+        <label htmlFor="building">Корпус:</label>
+        <input type="text" id="building" name="building" value={classItem.building} />
       </div>
       <button type="submit">Редактировать</button>
     </form>
