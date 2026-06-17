@@ -7,12 +7,12 @@ export function initWood(App, routes, errorComponent) {
     setErrorComponent(errorComponent);
   }
 
+  render('#app', App());
+
   if (routes) {
     setRoutes(routes);
     mountRoute();
   }
-
-  render('#app', App());
 
   initListeners();
 }
