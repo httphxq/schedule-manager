@@ -60,7 +60,7 @@ export default function CreateScheduleForm({ type }) {
         <input type="date" name="startDate"/>
       </label>
 
-      <div class={styles.weekdays}>
+      <fieldset class={styles.weekdays}>
         <label><input type="checkbox" checked name="weekdays" value="1" /> Пн</label>
         <label><input type="checkbox" checked name="weekdays" value="2" /> Вт</label>
         <label><input type="checkbox" checked name="weekdays" value="3" /> Ср</label>
@@ -68,7 +68,7 @@ export default function CreateScheduleForm({ type }) {
         <label><input type="checkbox" checked name="weekdays" value="5" /> Пт</label>
         <label><input type="checkbox" name="weekdays" value="6" /> Сб</label>
         <label><input type="checkbox" name="weekdays" value="7" /> Вс</label>
-      </div>
+      </fieldset>
 
       <button type="submit">Добавить</button>
     </form >
